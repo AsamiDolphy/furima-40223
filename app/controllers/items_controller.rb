@@ -2,22 +2,22 @@ class ItemsController < ApplicationController
   @items = Item.order('created_at DESC')
 
   def new
-    @item = Item.new
+    # @item = Item.new
   end
 
   def create
-    @item = Item.new(item_params)
-    if @item.save
-      redirect to root_path
-    else
-      remder :new, status: unprocessable_entity
-    end
+    # @item = Item.new(item_params)
+    # if @item.save
+    #   redirect to root_path
+    # else
+    #   remder :new, status: unprocessable_entity
+    # end
   end
 
-  private
+  # private
 
-  def item_oarams
-    params.require(:item).permit(:name, :info, :genre_id)
-  end
+  # def item_oarams
+  #   params.require(:item).permit(:name, :info, :genre_id)
+  # end
 
 end
