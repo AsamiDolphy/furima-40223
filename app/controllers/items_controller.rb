@@ -19,5 +19,4 @@ class ItemsController < ApplicationController
   # def item_oarams
   #   params.require(:item).permit(:name, :info, :genre_id)
   # end
-
 end
