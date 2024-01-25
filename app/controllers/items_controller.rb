@@ -10,8 +10,13 @@ class ItemsController < ApplicationController
     if @item.save
       redirect to root_path
     else
+      binding.pry
       render :new, status: unprocessable_entity
     end
+  end
+
+  def index
+    @items = Item.all
   end
 
   private
