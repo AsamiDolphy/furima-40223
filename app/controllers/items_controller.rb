@@ -17,6 +17,6 @@ class ItemsController < ApplicationController
   private
 
   def item_oarams
-    params.require(:item).permit(:name, :info, :genre_id)
+    params.require(:item).permit(:name, :info, :genre_id, :image)
   end
 end
