@@ -130,11 +130,10 @@
 
       <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
       <li class='list'>
-        <%# カリキュラムより↓ %>
-        <%# <% @items.each do |item| %> %>
+        <%# <% @items.each do |item| %>
           <%= link_to "#" do %>
             <div class='item-img-content'>
-              <%# <%= image_tag item.image, class: "item-img" %> %>
+              <%= image_tag "item-sample.png", class: "item-img" %>
 
               <%# 商品が売れていればsold outを表示しましょう %>
               <div class='sold-out'>
@@ -156,7 +155,7 @@
               </div>
             </div>
           <% end %>
-       <% end %>
+       <%# <% end %>
       </li>
       <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
 
