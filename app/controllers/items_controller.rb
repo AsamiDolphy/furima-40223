@@ -1,22 +1,26 @@
 class ItemsController < ApplicationController
-  @items = Item.order('created_at DESC')
+  before_action :authenticate_user!, except: [:index]
 
   def new
-    # @item = Item.new
+    @item = Item.new
   end
 
   def create
-    # @item = Item.new(item_params)
-    # if @item.save
-    #   redirect to root_path
-    # else
-    #   remder :new, status: unprocessable_entity
-    # end
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
-  # private
+  def index
+    # @items = Item.all
+  end
 
-  # def item_oarams
-  #   params.require(:item).permit(:name, :info, :genre_id)
-  # end
+  private
+
+  def item_params
+    params.require(:item).permit(:image, :name, :info, :category_id, :item_status_id, :shipping_fee_id, :prefecture_id, :scheduled_delivery_id, :price).merge(user_id: current_user.id)
+  end
 end
