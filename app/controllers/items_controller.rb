@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  @items = Item.order('created_at DESC')
+  before_action :authenticate_user!, except: [:index]
 
   def new
     @item = Item.new
