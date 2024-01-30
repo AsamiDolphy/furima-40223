@@ -18,9 +18,19 @@ class ItemsController < ApplicationController
     @items = Item.all.order('created_at DESC')
   end
 
-  def show 
-    @item = Item.find(params[:id]) 
-  end 
+  def show
+    @item = Item.find(params[:id])
+  end
+
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    item = Item.find(params[:id])
+    item.update(item_params)
+    redirect_to root_path
+  end
 
   private
 
