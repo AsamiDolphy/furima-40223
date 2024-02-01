@@ -8,7 +8,6 @@ FactoryBot.define do
     shipping_fee { ShippingFee.all.sample }
     prefecture { Prefecture.all.sample }
     scheduled_delivery { ScheduledDelivery.all.sample }
-    # { Faker::Number.between(from: 1, to: 3) }
     price { Faker::Number.between(from: 300, to: 9_999_999) }
 
     after(:build) do |message|
