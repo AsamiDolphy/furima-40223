@@ -66,12 +66,12 @@ RSpec.describe OrderShippingAddress, type: :model do
       it 'phone_numberが9桁以下だと保存できない' do
         @order_shipping_address.phone_number = 123456789
         @order_shipping_address.valid?
-        expect(@order_shipping_address.errors.full_messages).to include("Phone number is invalid")
+        expect(@order_shipping_address.errors.full_messages).to include('Phone number is invalid')
       end
       it 'phone_numberが12桁以上だと保存できない' do
         @order_shipping_address.phone_number = 123456789000
         @order_shipping_address.valid?
-        expect(@order_shipping_address.errors.full_messages).to include("Phone number is invalid")
+        expect(@order_shipping_address.errors.full_messages).to include('Phone number is invalid')
       end
       it 'phone_numberが全角数字だと保存できない' do
         @order_shipping_address.phone_number = '１２３４５６７８９０'
@@ -83,7 +83,7 @@ RSpec.describe OrderShippingAddress, type: :model do
         @order_shipping_address.valid?
         expect(@order_shipping_address.errors.full_messages).to include('Phone number is invalid')
       end
-      it "tokenが空では登録できないこと" do
+      it 'tokenが空では登録できない' do
         @order_shipping_address.token = nil
         @order_shipping_address.valid?
         expect(@order_shipping_address.errors.full_messages).to include("Token can't be blank")
