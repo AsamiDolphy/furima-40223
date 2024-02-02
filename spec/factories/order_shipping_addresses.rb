@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :order_shipping_address do
-    item_id { 1 }
-    user_id { 1 }
+    item_id { FactoryBot.build(:item) }
+    user_id { FactoryBot.build(:user) }
     postal_code { '123-4567' }
     prefecture_id { Prefecture.all.sample }
     city { '横浜市' }

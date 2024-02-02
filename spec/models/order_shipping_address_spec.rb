@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe OrderShippingAddress, type: :model do
   describe '購入情報の保存' do
     before do
+      item = FactoryBot.create(:item)
       user = FactoryBot.create(:user)
       @order_shipping_address = FactoryBot.build(:order_shipping_address)
     end
