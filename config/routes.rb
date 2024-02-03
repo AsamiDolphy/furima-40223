@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   get 'shipping_addresses/index'
   get 'shipping_addresses/new'
   root to: 'items#index'
-  resources :items
+  resources :items do
+    resources :orders, only: [:index, :create]
+  end
 end
