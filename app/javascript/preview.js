@@ -17,7 +17,7 @@ document.addEventListener('turbo:load', function(){
     if (alreadyPreview) {
       alreadyPreview.remove();
     };
-    
+
     const file = e.target.files[0];
     const blob = window.URL.createObjectURL(file);
     // 画像を表示するためのdiv要素を生成
@@ -27,11 +27,40 @@ document.addEventListener('turbo:load', function(){
     // 表示する画像を生成
     const previewImage = document.createElement('img');
     previewImage.setAttribute('class', 'preview-image');
-    previewImage.setAttribute('src', blob);
 
-    // 生成したHTMLの要素をブラウザに表示させる
-    previewWrapper.appendChild(previewImage);
-    previewList.appendChild(previewWrapper);
+    // Create a new image object
+    const imageObject = new Image();
+
+    // Set the source of the image object to the blob URL
+    imageObject.src = blob;
+
+    // Once the image object is loaded, resize it and set it as the src of the previewImage
+    imageObject.onload = function() {
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+
+      // Set the dimensions of the canvas to the desired resized dimensions
+      const newWidth = 200; // Set the new width here
+      const aspectRatio = imageObject.height / imageObject.width;
+      const newHeight = newWidth * aspectRatio;
+
+      canvas.width = newWidth;
+      canvas.height = newHeight;
+
+      // Draw the resized image on the canvas
+      context.drawImage(imageObject, 0, 0, newWidth, newHeight);
+
+      // Convert the canvas image to a data URL
+      const resizedImage = canvas.toDataURL('image/jpeg');
+
+      // Set the src attribute of the previewImage to the resized image data URL
+      previewImage.src = resizedImage;
+
+      // Append the previewImage to the previewWrapper
+      previewWrapper.appendChild(previewImage);
+
+      // Append the previewWrapper to the previewList
+      previewList.appendChild(previewWrapper);
+    };
   });
 });
-
