@@ -9,10 +9,10 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :scheduled_delivery
 
-  has_one_attached :image
+  has_many_attached :images
 
   with_options presence: true do
-    validates :image, :name, :info
+    validates :images, :name, :info
     validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
     validates :category_id, :item_status_id, :shipping_fee_id, :prefecture_id, :scheduled_delivery_id
   end
