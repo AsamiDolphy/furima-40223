@@ -1,6 +1,8 @@
-document.addEventListener('turbo:load', function(){
+const initializeImagePreview = () => {
   // 新規出品・編集ページのフォームを取得
-  const imageFields = document.querySelectorAll('input[type="file"][name="item[images][]"]');
+  const imageFields = document.querySelectorAll(
+    'input[type="file"][name="item[images][]"]'
+  );
 
   // プレビューを表示するためのスペースを取得
   const previewList = document.getElementById('previews');
@@ -9,9 +11,9 @@ document.addEventListener('turbo:load', function(){
   if (!imageFields.length) return null;
 
   // ファイル選択ボタンごとに処理を行う
-  imageFields.forEach(function(fileField) {
+  imageFields.forEach(function (fileField) {
     // input要素で値の変化が起きた際に呼び出される関数
-    fileField.addEventListener('change', function(e){
+    fileField.addEventListener('change', function (e) {
       const file = e.target.files[0];
       const blob = window.URL.createObjectURL(file);
 
@@ -50,7 +52,9 @@ document.addEventListener('turbo:load', function(){
     const dataIndex = e.target.getAttribute('data-index');
 
     // data-indexを使用して、既にプレビューが表示されているかを確認する
-    const alreadyPreview = document.querySelector(`.preview[data-index="${dataIndex}"]`);
+    const alreadyPreview = document.querySelector(
+      `.preview[data-index="${dataIndex}"]`
+    );
 
     // 画像が選択されなかった場合はプレビューを削除
     if (!file) {
@@ -64,8 +68,8 @@ document.addEventListener('turbo:load', function(){
 
     if (alreadyPreview) {
       // クリックしたfile_fieldのdata-indexと、同じ番号のプレビュー画像が既に表示されている場合は、画像の差し替えのみを行う
-      const alreadyPreviewImage = alreadyPreview.querySelector("img");
-      alreadyPreviewImage.setAttribute("src", blob);
+      const alreadyPreviewImage = alreadyPreview.querySelector('img');
+      alreadyPreviewImage.setAttribute('src', blob);
       return null;
     }
 
@@ -83,4 +87,7 @@ document.addEventListener('turbo:load', function(){
     previewWrapper.appendChild(previewImage);
     previewList.appendChild(previewWrapper);
   }
-});
+};
+
+window.addEventListener('turbo:load', initializeImagePreview);
+window.addEventListener('turbo:render', initializeImagePreview);
