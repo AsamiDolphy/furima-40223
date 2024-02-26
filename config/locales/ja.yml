@@ -1,0 +1,28 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+        last_name: 姓
+        first_name: 名
+        last_name_kana: 姓の読み仮名(カナ)
+        first_name_kana: 名の読み仮名(カナ)
+        birth_date: 生年月日
+        # should include both letters and numbers: は全角英数字を含む必要があります
+      item:
+        images: 商品画像
+        name: 商品名
+        info: 商品の説明
+        price: 価格
+      category:
+        category: カテゴリー
+      item_status:
+        item_status: 商品の状態
+      shipping_fee:
+        shipping_fee: 配送料の負担
+      prefecture:
+        prefecture: 発送元の地域
+      scheduled_delivery:
+        scheduled_delivery: 配送までの日数
+
+# カテゴリー以下が日本語化できていない
