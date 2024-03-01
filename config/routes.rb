@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
+  get 'cards/new'
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
   get 'shipping_addresses/index'
   get 'shipping_addresses/new'
   root to: 'items#index'
@@ -7,5 +10,6 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :create]
   end
 
-  resources :users, only: [:show, :update]
+  # resources :users, only: [:edit, :update]
+  resources :cards, only: [:new, :create]
 end

@@ -1,10 +1,12 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h1><b>マイページ　<%= current_user.nickname %>さん</b></h1>
+<h2>登録情報編集</h2>
+<br />
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <b><%= f.label :email %></b><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
@@ -12,9 +14,36 @@
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
+  <br />
+
+  <div class="Card__title">
+    <h2><b>カード情報</b><%= link_to "（登録）", new_card_path %></h2>
+  </div>
+  <div class="Card_info">
+    【カード番号】
+    <br />
+  <% if @card.present? && @card[:last4].present? %>
+    <%= "**** **** **** " + @card[:last4] %>
+  <% else %>
+    <!-- If no card information is available -->
+    未登録
+  <% end %>
+    <br />
+
+    【有効期限】
+    <br /><br />
+    <%= @card[:exp_month] %>
+    <%# 有効期限の「月」を取得 %>
+    /
+    <%= @card[:exp_year] %>
+    <%# 有効期限の「年」を取得 %>
+  </div>
+  <br />
+
   <div class="field">
     <%# <i>(leave blank if you don't want to change it)</i><br /> %>
-    <%= f.label :password %> <i>(変更したくない場合は、空白のままにしてください)</i><br />
+    <b><%= f.label :password %></b><br />
+    <i>(変更したくない場合は、空白のままにしてください)</i><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />
@@ -32,13 +61,14 @@
     <%= f.label :current_password %> <i>(確認のため変更前のパスワードを入力してください)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
+  <br />
 
   <div class="actions">
     <%# <%= f.submit "Update" %>
     <%= f.submit "更新する" %>
   </div>
 <% end %>
-<br/>
+<br />
 <h3>Cancel my account</h3>
 
 <%# <div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
