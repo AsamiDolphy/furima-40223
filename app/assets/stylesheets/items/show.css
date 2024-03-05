@@ -47,7 +47,6 @@
 .next-item-img {
   width: 85px;
   height: auto;
-  cursor: pointer; /* Indicates clickable items */
   margin-top: 10px;
   min-height: 85px;
   background-color: rgb(205, 202, 202);
