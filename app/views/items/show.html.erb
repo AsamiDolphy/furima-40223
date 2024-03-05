@@ -29,13 +29,9 @@ $(document).ready(function() {
     </h2>
     <div class="item-img-content">
       <%= image_tag @item.images[0], class:"item-box-img" %><br>
-      <%# <div class="other-images"> %>
       <% @item.images[1..-1].each do |image| %>
-          <%# <div class="other-image"> %>
-        <%= image_tag image, class: "next-item-img" %>
-          <%# </div> %>
+        <%= image_tag image, class: "next-item-img", data: { main_image: @item.images[0] } %>
       <%end%>
-      <%# </div> %>
       <% if @item.order != nil %>
       <div class="sold-out">
         <span>Sold Out!!</span>
@@ -132,12 +128,3 @@ $(document).ready(function() {
 </div>
 
 <%= render "shared/footer" %>
-
-<%# <script>
-  $(document).ready(function() {
-    $('.next-item-img').click(function() {
-      var newSrc = $(this).attr('src');
-      $('.item-box-img').attr('src', newSrc);
-    });
-  });
-</script> %>
