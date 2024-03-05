@@ -94,5 +94,3 @@ gem 'payjp'
 gem 'gon'
 
 gem 'rails-i18n'
-
-gem 'jsbundling-rails'
