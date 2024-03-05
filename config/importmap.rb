@@ -8,5 +8,3 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 pin "price_calc", to: "price_calc.js"
 pin "card", to: "card.js"
 pin "preview", to: "preview.js"
-# pin "jquery", to: "https://code.jquery.com/jquery-3.6.0.min.js"
-# pin "image_switch", to: "image_switch.js", preload: true
