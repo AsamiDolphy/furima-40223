@@ -8,7 +8,9 @@
     <script type="text/javascript" src="https://js.pay.jp/v2/pay.js"></script>
     <%= javascript_importmap_tags %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="module">
+      import "image_switch"
+    </script>
   </head>
 
   <body>

@@ -1,0 +1,11 @@
+{
+  "name": "furima-40223",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/AsamiDolphy/furima-40223.git",
+  "author": "Dolphy-A <154430437+AsamiDolphy@users.noreply.github.com>",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "^3.7.1"
+  }
+}

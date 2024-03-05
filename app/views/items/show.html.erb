@@ -110,22 +110,13 @@
   <a href="#" class="another-item"><%= @item.category.name %>をもっと見る</a>
 </div>
 
-<script>
-  $(document).ready(function() {
-    $('.next-item-img').click(function() {
-      var newSrc = $(this).attr('src');
-      $('.item-box-img').attr('src', newSrc);
-    });
-  });
-</script>
-
 <%= render "shared/footer" %>
 
-<script>
+<%# <script>
   $(document).ready(function() {
     $('.next-item-img').click(function() {
       var newSrc = $(this).attr('src');
       $('.item-box-img').attr('src', newSrc);
     });
   });
-</script>
+</script> %>
