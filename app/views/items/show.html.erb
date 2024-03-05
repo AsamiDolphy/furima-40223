@@ -1,12 +1,24 @@
 <%= render "shared/header" %>
 
 <script>
-  $(document).ready(function() {
-    $('.next-item-img').click(function() {
+$(document).ready(function() {
+  var originalSrc = $('.item-box-img').attr('src'); // Store the original source
+  var originalIconSrc = $('.next-item-img').attr('src'); // Store the original icon source
+  
+  $('.next-item-img').click(function() {
+    var currentSrc = $('.item-box-img').attr('src'); // Get the current source
+    
+    if (currentSrc === originalSrc) {
       var newSrc = $(this).attr('src');
       $('.item-box-img').attr('src', newSrc);
-    });
+      $('.next-item-img').attr('src', originalSrc); // Switch back the icon to the original image
+    } else {
+      $('.item-box-img').attr('src', originalSrc);
+      $(this).attr('src', originalIconSrc); // Switch back the clicked image to the original icon
+    }
   });
+});
+
 </script>
 
 <%# 商品の概要 %>
@@ -15,15 +27,13 @@
     <h2 class="name">
       <%= @item.name %>
     </h2>
-    <div class="item-img-content">
-      <%= image_tag @item.images[0], class:"item-box-img" %><br>
-      <%# <div class="other-images"> %>
+    <div class="image-container">
+    <%= image_tag @item.images[0], class: "item-box-img" %>
+    <div class="icons-container">
       <% @item.images[1..-1].each do |image| %>
-          <%# <div class="other-image"> %>
-        <%= image_tag image, class: "next-item-img" %>
-          <%# </div> %>
-      <%end%>
-      <%# </div> %>
+        <%= image_tag image, class: "next-item-img", data: { main_image: @item.images[0] } %>
+      <% end %>
+    </div>
       <% if @item.order != nil %>
       <div class="sold-out">
         <span>Sold Out!!</span>
@@ -120,12 +130,3 @@
 </div>
 
 <%= render "shared/footer" %>
-
-<%# <script>
-  $(document).ready(function() {
-    $('.next-item-img').click(function() {
-      var newSrc = $(this).attr('src');
-      $('.item-box-img').attr('src', newSrc);
-    });
-  });
-</script> %>
