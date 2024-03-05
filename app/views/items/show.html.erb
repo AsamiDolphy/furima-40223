@@ -3,6 +3,7 @@
 <script>
 $(document).ready(function() {
   var originalSrc = $('.item-box-img').attr('src'); // Store the original source
+  var originalIconSrc = $('.next-item-img').attr('src'); // Store the original icon source
   
   $('.next-item-img').click(function() {
     var currentSrc = $('.item-box-img').attr('src'); // Get the current source
@@ -10,11 +11,14 @@ $(document).ready(function() {
     if (currentSrc === originalSrc) {
       var newSrc = $(this).attr('src');
       $('.item-box-img').attr('src', newSrc);
+      $('.next-item-img').attr('src', originalSrc); // Switch back the icon to the original image
     } else {
       $('.item-box-img').attr('src', originalSrc);
+      $(this).attr('src', originalIconSrc); // Switch back the clicked image to the original icon
     }
   });
 });
+
 </script>
 
 <%# 商品の概要 %>
