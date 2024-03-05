@@ -1,5 +1,14 @@
 <%= render "shared/header" %>
 
+<script>
+  $(document).ready(function() {
+    $('.next-item-img').click(function() {
+      var newSrc = $(this).attr('src');
+      $('.item-box-img').attr('src', newSrc);
+    });
+  });
+</script>
+
 <%# 商品の概要 %>
 <div class="item-show">
   <div class="item-box">
@@ -8,13 +17,13 @@
     </h2>
     <div class="item-img-content">
       <%= image_tag @item.images[0], class:"item-box-img" %><br>
-      <div class="other-images">
-        <% @item.images[1..-1].each do |image| %>
-          <div class="other-image">
-            <%= image_tag image %>
-          </div>
-        <%end%>
-      </div>
+      <%# <div class="other-images"> %>
+      <% @item.images[1..-1].each do |image| %>
+          <%# <div class="other-image"> %>
+        <%= image_tag image, class: "next-item-img" %>
+          <%# </div> %>
+      <%end%>
+      <%# </div> %>
       <% if @item.order != nil %>
       <div class="sold-out">
         <span>Sold Out!!</span>
@@ -111,3 +120,12 @@
 </div>
 
 <%= render "shared/footer" %>
+
+<%# <script>
+  $(document).ready(function() {
+    $('.next-item-img').click(function() {
+      var newSrc = $(this).attr('src');
+      $('.item-box-img').attr('src', newSrc);
+    });
+  });
+</script> %>
