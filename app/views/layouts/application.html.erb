@@ -8,22 +8,10 @@
     <script type="text/javascript" src="https://js.pay.jp/v2/pay.js"></script>
     <%= javascript_importmap_tags %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <!-- Load jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
 
   <body>
     <%= yield %>
-
-    <!-- Your script using jQuery -->
-    <script>
-      var $j = jQuery.noConflict(); // Use jQuery in noConflict mode
-      $j(document).ready(function() {
-          // Add your jQuery code here
-          $j('.next-item-img').click(function() {
-              // Your event handling code
-          });
-      });
-    </script>
   </body>
 </html>

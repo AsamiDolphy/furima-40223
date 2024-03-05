@@ -1,5 +1,14 @@
 <%= render "shared/header" %>
 
+<script>
+  $(document).ready(function() {
+    $('.next-item-img').click(function() {
+      var newSrc = $(this).attr('src');
+      $('.item-box-img').attr('src', newSrc);
+    });
+  });
+</script>
+
 <%# 商品の概要 %>
 <div class="item-show">
   <div class="item-box">
