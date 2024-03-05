@@ -9,8 +9,13 @@
   padding: 5vh 0;
 }
 
-.item-img-content {
+.image-container {
   position: relative; /* Make the container a positioning context */
+}
+
+.icons-container {
+  text-align: center; /* Center the icons horizontally */
+  margin-top: 10px; /* Space between the main image and the icons */
 }
 
 .item-box {
@@ -40,11 +45,11 @@
 }
 
 .next-item-img {
-  width: 50px;
+  width: 85px;
   height: auto;
   cursor: pointer; /* Indicates clickable items */
   margin-top: 10px;
-  min-height: 50px;
+  min-height: 85px;
   background-color: rgb(205, 202, 202);
   object-fit: contain;
   display: block; 
