@@ -133,7 +133,12 @@
           <li class='list'>
             <%= link_to item_path(item) do %> 
               <div class='item-img-content'>
-                <%= image_tag item.images[0], class: "item-img" %>
+                <% if item.images[0].present? %>
+                  <%= image_tag item.images[0], class: "item-img" %>
+                <% else %>
+                  <!-- Display a placeholder image or message when the first image is nil -->
+                  <%= image_tag "placeholder_image.png", class: "item-img", alt: "Placeholder Image" %>
+                <% end %>
 
                 <% if item.order != nil %>
                   <div class='sold-out'>
