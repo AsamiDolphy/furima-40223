@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :scheduled_delivery
 
-  has_many_attached :images
+  has_many_attached :images, dependent: :destroy
 
   with_options presence: true do
     validates :images, :name, :info
